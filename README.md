@@ -1,6 +1,6 @@
 ---
 
-# 🔎 AI Resume Analyzer — Smart Resume Insights Powered by AI
+# 🔎 Resumind — Smart Resume Insights Powered by AI
 
 A lightweight, production-ready resume analysis platform built with **React + Vite** and **React Router**, powered by **Puter.js** for serverless backend logic, file storage, and AI inference. Upload your resume (PDF/TXT/DOCX) and get instant AI-driven insights on **ATS score**, **skills extraction**, **experience evaluation**, and **improvement suggestions**.
 
