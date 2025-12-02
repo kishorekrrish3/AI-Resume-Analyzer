@@ -1,177 +1,276 @@
-# 🔎 AI Resume Analyzer
+---
 
-A lightweight AI-powered resume analyzer built with **React + Vite** (React Router), using **Puter.js** as the serverless backend for file storage, AI inference, and hosting. Upload a resume (PDF / TXT), let the AI extract key info (skills, experience, education) and get actionable feedback for ATS compatibility and job-fit.
+# 🔎 AI Resume Analyzer — Smart Resume Insights Powered by AI
 
-Live demo: *(https://marshmello-resumind.vercel.app/)*
-Repo: [https://github.com/kishorekrrish3/AI-Resume-Analyzer](https://github.com/kishorekrrish3/AI-Resume-Analyzer). ([GitHub][1])
+A lightweight, production-ready resume analysis platform built with **React + Vite** and **React Router**, powered by **Puter.js** for serverless backend logic, file storage, and AI inference. Upload your resume (PDF/TXT/DOCX) and get instant AI-driven insights on **ATS score**, **skills extraction**, **experience evaluation**, and **improvement suggestions**.
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react" />
+  <img src="https://img.shields.io/badge/Vite-5-purple?style=for-the-badge&logo=vite" />
+  <img src="https://img.shields.io/badge/React_Router-7-red?style=for-the-badge&logo=reactrouter" />
+  <img src="https://img.shields.io/badge/Puter.js-Serverless-brightgreen?style=for-the-badge&logo=cloudflareworkers" />
+  <img src="https://img.shields.io/badge/Docker-Ready-blue?style=for-the-badge&logo=docker" />
+  <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge" />
+</p>
 
 ---
 
-## 🚀 Highlights
+## 📌 Table of Contents
 
-* Frontend built with **React + Vite** and **React Router** (project scaffold based on the React Router template). ([GitHub][1])
-* Uses **Puter.js** for serverless backend tasks: file uploads, database, AI (OpenAI/Claude/Gemini access via Puter), and instant deployment — no separate backend servers or API keys required. ([Puter.js][2])
-* Easy local dev with Vite (dev server default: `http://localhost:5173`). ([GitHub][1])
-* Dockerfile included for containerized runs and production deployment. ([GitHub][1])
-
----
-
-## 🧭 Table of Contents
-
+* [About the Project](#-about-the-project)
+* [Features](#-features)
 * [Tech Stack](#-tech-stack)
-* [How It Works (High-level)](#-how-it-works-high-level)
-* [Quick Start (Local)](#-quick-start-local)
-* [Environment & Puter.js notes](#-environment--puterjs-notes)
-* [Docker](#-docker)
-* [Deploying with Puter (recommended for no-server deploy)](#-deploying-with-puter-recommended-for-no-server-deploy)
+* [How It Works](#-how-it-works)
 * [Project Structure](#-project-structure)
-* [Roadmap & Ideas](#-roadmap--ideas)
+* [Getting Started](#️-getting-started)
+* [Environment Variables](#-environment-variables)
+* [Screenshots](#-screenshots)
+* [Docker](#-docker)
+* [Deploying with Puter](#-deploying-with-puter)
+* [Roadmap](#-roadmap)
 * [Contributing](#-contributing)
-* [License](#-license)
+* [Author](#-author)
+
+---
+
+## 📖 About the Project
+
+The **AI Resume Analyzer** is designed to help users quickly evaluate their resumes using advanced AI models. By leveraging **Puter.js**, the app handles file parsing, storage, and AI inference with **zero backend servers**, giving you a fully serverless, scalable experience.
+
+🔗 **Live Deployment:** [https://marshmello-resumind.vercel.app/](https://marshmello-resumind.vercel.app/)
+🔗 **GitHub Repo:** [https://github.com/kishorekrrish3/AI-Resume-Analyzer](https://github.com/kishorekrrish3/AI-Resume-Analyzer)
+
+This project showcases real-world integration of serverless compute, client-side routing, and AI engineering — all wrapped in a clean, modern UI.
+
+---
+
+## ✨ Features
+
+### 🖥️ Frontend
+
+* Responsive, modern UI
+* Client-side routing using **React Router 7**
+* Fast dev experience powered by **Vite**
+* Modular and scalable component architecture
+
+### 🤖 AI Features
+
+* Extracted details:
+
+  * Skills
+  * Experience
+  * Education
+  * Achievements
+* ATS scoring
+* Improvement suggestions
+* AI-powered resume breakdown & summary
+
+### 🧠 Developer Experience
+
+* Serverless backend using Puter.js
+* No backend server required
+* File storage + AI inference fully handled via Puter workers
+* Easy deployment to Puter or Vercel
+* Docker-ready
 
 ---
 
 ## 🧱 Tech Stack
 
-* React (Vite) — Frontend SPA
-* React Router (configured via `react-router.config.ts`)
-* Puter.js — serverless backend, file storage, AI (inference) and hosting. ([Puter.js][2])
-* JavaScript (project is mainly JS)
-* Docker (optional)
-* Optional: PostHog / analytics (if added)
+| Category         | Technologies                           |
+| ---------------- | -------------------------------------- |
+| Framework        | **React 18 (Vite)**                    |
+| Routing          | **React Router 7**                     |
+| Backend          | **Puter.js (serverless AI + storage)** |
+| Language         | JavaScript                             |
+| Styling          | CSS                                    |
+| Deployment       | Vercel / Puter                         |
+| Containerization | Docker                                 |
+| Version Control  | Git + GitHub                           |
 
 ---
 
-## ⚙️ How it works (high-level)
+## ⚙️ How It Works
 
-1. User uploads a resume (PDF / TXT / DOCX) via the frontend.
-2. The file is stored / proxied using **Puter.js** (which provides client-side hooks for storage and backend worker calls). Puter handles authentication, storage, AI model calls and isolates credentials — so you don’t keep API keys in the client. ([Puter.js][3])
-3. A Puter worker or API call runs an AI analysis (LLM call) to extract sections (skills, experience, education), score ATS friendliness, and return suggestions.
-4. Frontend displays parsed fields, key highlights, and an improvement checklist.
+1. User uploads a resume file (`PDF / TXT / DOCX`).
+2. The file is handled by **Puter.js**, which provides file storage + secure access.
+3. A Puter worker performs AI inference using LLMs (GPT, Claude, Gemini etc.).
+4. AI extracts + structures:
+
+   * Skills
+   * Experience
+   * Education
+   * Key highlights
+   * ATS score
+5. Results are displayed using beautiful components (cards, badges, gauges).
+
+Puter abstracts away:
+
+* API keys
+* Server compute
+* File system
+* Backend infrastructure
 
 ---
 
-## 🔧 Quick Start (Local)
+## 📁 Project Structure
 
-> Clone and run the Vite dev server.
+```
+ai-resume-analyzer/
+│
+├── .react-router/                # (optional) react-router generated files
+│
+├── app/                          # Main app source
+│   ├── components/               # UI components
+│   │   ├── Accordion.tsx
+│   │   ├── ATS.tsx
+│   │   ├── Details.tsx
+│   │   ├── FileUploader.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── ResumeCard.tsx
+│   │   ├── ScoreBadge.tsx
+│   │   ├── ScoreCircle.tsx
+│   │   ├── ScoreGauge.tsx
+│   │   └── Summary.tsx
+│   │
+│   ├── lib/                      # Utilities & Puter integration
+│   │   ├── pdf2img.ts
+│   │   ├── puter.ts
+│   │   └── utils.ts
+│   │
+│   ├── routes/                   # React Router route components
+│   │   ├── auth.tsx
+│   │   ├── home.tsx
+│   │   ├── resume.tsx
+│   │   ├── upload.tsx
+│   │   └── wipe.tsx
+│   │
+│   ├── app.css                   # Global styles
+│   ├── root.tsx                  # App root / layout
+│   └── routes.ts                 # Route configuration
+│
+├── build/                        # Build outputs (optional)
+│
+├── constants/                    # Global constants
+│   └── index.ts
+│
+├── public/                       # Static assets (screenshots, icons)
+│   ├── screenshot-1.png
+│   ├── screenshot-2.png
+│   └── screenshot-3.png
+│
+├── types/                        # Type definitions
+│   ├── index.d.ts
+│   └── puter.d.ts
+│
+├── .dockerignore
+├── .gitignore
+├── package.json
+└── README.md
+```
+
+---
+
+## 🖼️ Screenshots
+
+![Home Page](./public/screenshot-1.png)
+![Login Page](./public/screenshot-2.png)
+![Upload Page](./public/screenshot-3.png)
+![Analysis Page](./public/screenshot-4.png)
+
+---
+
+## 🔧 Getting Started
+
+### 1️⃣ Clone the repository
 
 ```bash
-# 1. Clone
 git clone https://github.com/kishorekrrish3/AI-Resume-Analyzer.git
 cd AI-Resume-Analyzer
-
-# 2. Install
-npm install
-
-# 3. Dev server
-npm run dev
-# Open: http://localhost:5173
 ```
 
-The repo uses the React Router starter template and Vite HMR for fast development. ([GitHub][1])
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Start development server
+
+```bash
+npm run dev
+```
+
+### 4️⃣ Open in browser
+
+```
+http://localhost:5173
+```
 
 ---
 
-## 🔐 Environment & Puter.js notes
+## 🔐 Environment Variables
 
-This project is designed to use Puter.js for backend and AI functionality. Depending on how you wired Puter into the project (script tag or SDK), follow Puter docs — they provide zero-key, serverless access to AI & storage.
+If you use Puter workers or server-side tokens, create `.env`:
 
-Minimal steps / guidance:
-
-1. Add Puter.js script (if project uses the client script approach):
-
-```html
-<!-- in index.html (if using script) -->
-<script src="https://js.puter.com/v2/"></script>
+```
+PUTER_API_KEY=your_key_here
+PUTER_WORKER_ID=your_worker_id_here
+VITE_APP_BASE_URL=http://localhost:5173
 ```
 
-2. Common environment needs (if any server-side config or worker names are used) — keep them in `.env` / `.env.local`. Puter also supports programmatic workers and hosting through their dashboard / API. ([Puter.js][3])
-
-> Note: Puter abstracts API keys/server logic; consult Puter docs for best practices (auth flows, worker creation, storage paths). ([Puter.js][2])
+*(Puter.js often requires no keys for basic usage.)*
 
 ---
 
 ## 🐳 Docker
 
-A `Dockerfile` is included in the repo (useful for containerized hosting). Example build/run steps (adapt to your Dockerfile):
+### Build image
 
 ```bash
-# build
 docker build -t ai-resume-analyzer .
+```
 
-# run locally (expose port the app serves; adjust if your Dockerfile serves on 3000)
+### Run container
+
+```bash
 docker run -p 3000:3000 ai-resume-analyzer
 ```
 
-The repo README / template also includes Docker guidance for deploying to cloud container platforms. ([GitHub][1])
+---
+
+## ☁️ Deploying with Puter
+
+1. Go to Puter dashboard
+2. Link GitHub repo or upload the `/dist` build
+3. Add environment variables (if used)
+4. Publish — Puter gives you a live link instantly
+5. AI + file storage is auto-managed 🎉
 
 ---
 
-## ☁️ Deploying with Puter (no-server / instant)
+## 🛣️ Roadmap
 
-Puter provides hosting & automatic deployment for client apps — perfect for this project if you want a zero-config deployment. Steps (summary):
-
-1. Create a Puter account and connect your GitHub repo (or upload build).
-2. Configure any Puter workers (if you rely on server-side worker code for resume parsing).
-3. Publish — Puter will create a live URL and handle storage / API routing.
-
-See Puter’s hosting & Next.js/Static deployment guides for details and examples. ([developer.puter.com][4])
-
----
-
-## 📁 Project Structure (example)
-
-> Based on the repo's file layout (React Router template + your app files):
-
-```
-AI-Resume-Analyzer/
-├── app/ or src/                  # React app source (components, pages, hooks)
-├── public/                       # Static assets
-├── react-router.config.ts        # Router configuration (routes)
-├── vite.config.ts                # Vite configuration
-├── Dockerfile                    # Containerization
-├── package.json
-├── tsconfig.json (if TS used)
-└── README.md
-```
-
-You can expand this to list exact components and Puter worker files if you want the README to include a full tree.
-
----
-
-## 🛣️ Roadmap & Ideas
-
-* ✅ Core resume parsing & scoring
-* 🔁 Add resume versioning + history (store previous uploads)
-* 🧾 Export suggestions as downloadable PDF / email
-* 🔐 Add authentication & user dashboards (Puter supports auth)
-* ⚙️ Add multiple LLM backends and model selection (Puter supports GPT/Claude/Gemini)
-* 📈 Integrate analytics (PostHog) to measure conversion & feature usage
+* Add resume history & versioning
+* Support multi-page resume parsing
+* Export analysis as PDF
+* User login + dashboards (via Puter Auth)
+* Choice of LLM model
+* Analytics (PostHog)
 
 ---
 
 ## 🤝 Contributing
 
-Contributions welcome! A recommended flow:
-
-1. Fork → Create a feature branch
-2. `npm install` → `npm run dev` → make changes
-3. Open a PR with a clear description and testing steps
-
----
-
-## 📄 License
-
-Add a `LICENSE` file (MIT recommended) and state licensing if you want this project to be open source.
+1. Fork the repo
+2. Create a feature branch
+3. Run locally → make your changes
+4. Submit PR with description
 
 ---
 
-## 🔗 Useful links & references
+## 👤 Author
 
-* Repo (this project): [https://github.com/kishorekrrish3/AI-Resume-Analyzer](https://github.com/kishorekrrish3/AI-Resume-Analyzer). ([GitHub][1])
-* Puter.js docs (getting started, auth, storage, AI): [https://docs.puter.com/](https://docs.puter.com/) and [https://developer.puter.com/](https://developer.puter.com/). ([Puter.js][2])
-* Puter hosting / deploy tutorial: developer.puter.com (deploy guides). ([developer.puter.com][4])
-* React Router template & README (Vite dev server & template features). ([GitHub][1])
-
----
-
+**Kishore P**
+AI & ML Enthusiast • Full-Stack Developer
+VIT Chennai
